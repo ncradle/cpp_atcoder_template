@@ -12,4 +12,9 @@ struct Fast {
   }
 } fast;
 
-int main() { return 0; }
+int main() {
+
+  // Enjoy programming !!!
+
+  return 0;
+}
