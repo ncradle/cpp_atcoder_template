@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import argparse
+import shutil
+from pathlib import Path
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="make cpp template file to current directroy for atcoder")
+    parser.add_argument("FILENAME", help="make file name")
+    args = parser.parse_args()
+    file_name = args.FILENAME + ".cpp"
+    share_dir = Path.home() / ".local/share/cpp_atcoder_template"
+    origin_file = share_dir / "template.cc"
+    make_file = Path.cwd() / file_name
+
+    if make_file.exists():
+        while True:
+            print(file_name, "already exists")
+            choice = input("can you overwrite it? [y/N]: ").lower()
+            if choice in ["y", "ye", "yes"]:
+                break
+            elif choice in ["n", "no"]:
+                print("cancel process")
+                exit()
+
+    shutil.copy(origin_file, file_name)
