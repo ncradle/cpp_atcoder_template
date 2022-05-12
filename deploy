@@ -8,16 +8,7 @@ import os
 if __name__ == "__main__":
     share_dir = Path.home() / ".local/share/cpp_atcoder_template"
     bin_dir = Path.home() / (".local/bin")
-    if share_dir.exists():
-        while True:
-            print("cpp_atcoder_template already exists")
-            choice = input("can you replace it with a new one? [y/N]: ").lower()
-            if choice in ["y", "ye", "yes"]:
-                shutil.rmtree(share_dir)
-                print("replace new oen")
-            elif choice in ["n", "no"]:
-                print("cancel process")
-                exit()
-    os.mkdir(share_dir)
+    if not share_dir.exists():
+        os.mkdir(share_dir)
     shutil.copy("./template.cc", share_dir)
     shutil.copy("./atcoder", bin_dir)
